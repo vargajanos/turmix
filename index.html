@@ -5,87 +5,99 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="Assets/css/style.css">
+    <style>
+        .hero {
+            position: relative; /* A navbar pozicionálásához */
+            overflow: hidden; /* A navbar-t ne vágja le */
+            padding: 0; /* Eltávolítja a paddingot, ha szükséges */
+        }
+
+        .hero .navbar {
+            width: 100%; /* A navbar kitölti a hero szélességét */
+            position: absolute; /* Pozicionálás a hero szekción belül */
+            top: 0; /* A hero tetején kezdődik */
+            left: 0;
+            z-index: 1000; /* A navbar legyen a hero szöveg felett */
+        }
+
+        .herotext {
+            text-align: center;
+            padding-top: 80px; /* Helyet hagy a navbar számára */
+            color: white; /* Szöveg szín */
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <header></header>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="#">Főoldal</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  <section class="hero">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" style="color: black !important; font-size: larger; font-weight: bold;" href="#">Turmix</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNav">
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                  <li class="nav-item lgdOut">
-                    <a class="nav-link" href="#" onclick="render('login')">Bejelentkezés</a>
-                  </li>
-                  <li class="nav-item lgdOut">
-                    <a class="nav-link" href="#" onclick="render('registration')">Regisztráció</a>
-                  </li>
-                  <li class="nav-item lgdAdm">
-                    <a class="nav-link" href="#" onclick="render('users');">Users</a>
-                  </li>
-                  <li class="nav-item lgdIn">
-                    <a class="nav-link" href="#" onclick="render('breakfast')">Reggeli</a>
-                  </li>
-                  <li class="nav-item lgdIn">
-                    <a class="nav-link" href="#" onclick="render('lunch')">Ebéd</a>
-                  </li>
-                  <li class="nav-item lgdIn">
-                    <a class="nav-link" href="#" onclick="render('dinner')">Vacsora</a>
-                  </li>
-                  <li class="nav-item lgdIn">
-                    <a class="nav-link" href="#" onclick="render('recipes')">Saját receptek</a> 
-                  </li>
-                  <li class="nav-item lgdIn">
-                    <a class="nav-link" href="#" onclick="render('profile')">Profil</a>
-                  </li>
-                  <li class="nav-item lgdIn">
-                    <a class="nav-link" href="#" onclick="logout()">Kilépés</a>
-                  </li>
-
-
-
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item">Előétel</a>
-                        <a class="dropdown-item">Főétel</a>
-                        <a class="dropdown-item">Köret</a>
-                        <a class="dropdown-item">Desszert</a>
-                    </div>
-                </li>
-               
-                  
-                  
-                  
+                    <li class="nav-item lgdOut">
+                        <a class="nav-link" href="#" onclick="render('login')">Bejelentkezés</a>
+                    </li>
+                    <li class="nav-item lgdOut">
+                        <a class="nav-link" href="#" onclick="render('registration')">Regisztráció</a>
+                    </li>
+                    <li class="nav-item lgdAdm">
+                        <a class="nav-link" href="#" onclick="render('users')">Users</a>
+                    </li>
+                    <li class="nav-item lgdIn">
+                        <a class="nav-link" href="#" onclick="render('breakfast')">Reggeli</a>
+                    </li>
+                    <li class="nav-item lgdIn">
+                        <a class="nav-link" href="#" onclick="render('lunch')">Ebéd</a>
+                    </li>
+                    <li class="nav-item lgdIn">
+                        <a class="nav-link" href="#" onclick="render('dinner')">Vacsora</a>
+                    </li>
+                    <li class="nav-item lgdIn">
+                        <a class="nav-link" href="#" onclick="render('recipes')">Saját receptek</a>
+                    </li>
+                    <li class="nav-item lgdIn">
+                        <a class="nav-link" href="#" onclick="render('profile')">Profil</a>
+                    </li>
+                    <li class="nav-item lgdIn">
+                        <a class="nav-link" href="#" onclick="logout()">Kilépés</a>
+                    </li>
+                    <!-- Dropdown menü -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Ételkategóriák
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Előétel</a></li>
+                            <li><a class="dropdown-item" href="#">Főétel</a></li>
+                            <li><a class="dropdown-item" href="#">Köret</a></li>
+                            <li><a class="dropdown-item" href="#">Desszert</a></li>
+                        </ul>
+                    </li>
                 </ul>
-              </div>
             </div>
-        </nav>
-        <section class="hero">
-          <div class="container">
-            <h1>Üdvözöljük a Weboldalon</h1>
-            <p>Ez a hero image szekció. Használja ki a lehetőségeket!</p>
-            <a href="#" class="btn btn-primary btn-lg">Tudjon meg többet</a>
-          </div>
-        </section>
-        <main>
-            
-
-        </main>
-        <footer></footer>
+        </div>
+    </nav>
+    <div class="container herotext">
+        <h1>Konrád’s Gatorade</h1>
+        <p>Drink it and be awesome, mert a boring nem opció!</p>
+        <a href="#" class="btn btn-primary btn-lg">Tovább!</a>
     </div>
+  </section>
+  <main>
+      <!-- Tartalom -->
+  </main>
+  <footer></footer>
 
-    <script src="Assets/js/bootstrap.bundle.min.js"></script>
-    <script src="Assets/js/axios.min.js"></script>
-    <script src="Assets/js/moment.js"></script>
-    <script src="Assets/js/fullcalendar.min.js"></script>
-    <script src="Assets/js/chart.js"></script>
-    <script src="Assets/js/app.js"></script>
-
-    <!-- controllers -->
-    <script src="Controllers/userCtrl.js"></script>
-
-
+  <script src="Assets/js/bootstrap.bundle.min.js"></script>
+  <script src="Assets/js/axios.min.js"></script>
+  <script src="Assets/js/moment.js"></script>
+  <script src="Assets/js/fullcalendar.min.js"></script>
+  <script src="Assets/js/chart.js"></script>
+  <script src="Assets/js/app.js"></script>
+  <!-- controllers -->
+  <script src="Controllers/userCtrl.js"></script>
 </body>
 </html>

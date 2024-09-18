@@ -5,18 +5,18 @@
  
 body{
     background-color: rgb(24, 61, 61);
-    padding: 25px 50px;
+    
     color: white;
+  
 }
  
 .navbar{
-    border-radius:  1rem 1rem 0rem 0rem;
-    background-color: #D9D9D9 !important;
+    
+    background-color: #00000000 !important;
     /* box-shadow: rgb(100, 100, 100) 5px 0px 10px; */
     filter: drop-shadow(0 20px 13px rgb(0 0 0 / 0.03)) drop-shadow(0 8px 5px rgb(0 0 0 / 0.08));
-
+    width: 100%;
 }
-
 
 
  
@@ -28,7 +28,19 @@ body{
     padding: 2.5px;
     margin: 2.5px;
     border-radius:  10px 10px 10px 10px;
-    background-color: #777E78;
+    background-color: #ffffff;
+    color: black !important;
+}
+
+.nav-item:hover {
+    background-color: #395248; /* Sötétebb zöld hover állapotban */
+    border-color: #395248; 
+}
+
+.nav-item:active {
+    background-color: #395248 !important; /* Sötétebb zöld hover állapotban */
+    border-color: #395248 !important; 
+    transform: scale(0.95); /* Kisebb méret kattintás alatt */
 }
  
 @media only screen and (max-width: 991px) {
@@ -49,7 +61,8 @@ body{
   }
  
 a{
-    color: white !important;
+    color: white ;
+    font-weight: bolder !important;
 }
  
  
@@ -117,25 +130,44 @@ footer{
         linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
         url(
 '/Assets/img/hero.jpg');
-        background-size: cover;
-        background-position: center;
-        height: 45vh; 
+        background-size:cover;
+        background-position:center;
+        height: 55vh; 
         display: flex;
         align-items: center;
         justify-content: center;
         color: white;
         text-align: center;
+        zoom: -5%;
       }
   
+.btn{
+    background-color: #183D3D; 
+    border-color: #183D3D; 
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3), -3px -3px 5px rgba(255, 255, 255, 0.3);
+}
+      .btn:hover {
+        background-color: rgb(4, 22, 11); /* Sötétebb zöld hover állapotban */
+        border-color: rgb(4, 22, 11); 
+    }
 
-      
+    .btn:active {
+        background-color: rgb(4, 22, 11) !important; /* Sötétebb zöld hover állapotban */
+        border-color: rgb(4, 22, 11) !important; 
+        transform: scale(0.95); /* Kisebb méret kattintás alatt */
+    }
+
+
 .hero .content {
         position: absolute;
+        
          
       }
 
      
-  
+  .herotext {
+    margin-left: 50%;
+  }
   
 .hero h1 {
         font-size: 4rem;

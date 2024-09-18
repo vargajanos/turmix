@@ -28,7 +28,7 @@ app.get('/', (req, res) => {
 app.post('/reg', (req, res) => {
 
     // kötelező adatok ellenőrzése
-    if (!req.body.name || !req.body.email || !req.body.passwd || !req.body.confirm ){
+    if (!req.body.name || !req.body.email || !req.body.phone || !req.body.passwd || !req.body.confirm){
        res.status(203).send('Nem adtál meg minden kötelező adatot!');
        return;
     }
@@ -60,7 +60,7 @@ app.post('/reg', (req, res) => {
        }
       
       // új felhasználó felvétele
-      pool.query(`INSERT INTO users VALUES('${uuid.v4()}', '${req.body.name}', '${req.body.email}', SHA1('${req.body.passwd}'), 'user')`, (err, results)=>{
+      pool.query(`INSERT INTO users VALUES('${uuid.v4()}', '${req.body.name}', '${req.body.email}', '${req.body.phone}', SHA1('${req.body.passwd}'), 'user', '1')`, (err, results)=>{
         if (err){
           res.status(500).send('Hiba történt az adatbázis művelet közben!');
           return;

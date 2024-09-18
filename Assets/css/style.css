@@ -1,0 +1,111 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+ 
+body{
+    background-color: rgb(24, 61, 61);
+    padding: 25px 50px;
+    color: white;
+}
+ 
+.navbar{
+    border-radius:  1rem 1rem 0rem 0rem;
+    background-color: #D9D9D9 !important;
+    /* box-shadow: rgb(100, 100, 100) 5px 0px 10px; */
+    filter: drop-shadow(0 20px 13px rgb(0 0 0 / 0.03)) drop-shadow(0 8px 5px rgb(0 0 0 / 0.08));
+
+}
+
+
+
+ 
+.navbar-nav{
+    margin-left: auto;
+}
+ 
+.nav-item{
+    padding: 2.5px;
+    margin: 2.5px;
+    border-radius:  10px 10px 10px 10px;
+    background-color: #777E78;
+}
+ 
+@media only screen and (max-width: 991px) {
+    a{
+        margin-right: 2%;
+    }
+    .nav-item{
+        max-width: 100%;
+        min-width: 100%;
+        text-align: center;
+        margin-left: auto;
+    }
+ 
+    .dropdown-menu{
+        text-align: center;
+        background-color: rgba(119, 126, 120, 0.5);
+    }
+  }
+ 
+a{
+    color: white !important;
+}
+ 
+ 
+ 
+.dropdown-menu{
+    background-color: rgba(119, 126, 120, 0.5);
+    border-radius: 0px 0px 10px 10px;
+}
+ 
+.dropdown-item:hover{
+    color: black !important;
+}
+
+
+.form-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    width: 60%;
+    min-width: 140px;
+    min-height: calc(100vh - 210px);
+}
+ 
+.regBtnLine{
+    display: flex;
+    justify-content: space-between;
+}
+ 
+.regBtnLine label a{
+    color: #88AB8E !important;
+}
+ 
+.regBtnLine button{
+    background-color: #777E78;
+    color: white;
+}
+ 
+@media screen and (max-width: 480px) {
+    .regBtnLine{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+    .regBtnLine button{
+        margin-top: 10px;
+    }
+}
+
+
+footer{
+    border-radius:  1rem;
+    color: #777E78;
+    background-color: #D9D9D9;
+    text-align: center;
+    padding: 25px;
+    margin: 10px 0px;
+    box-shadow: rgb(100, 100, 100) 5px 5px 10px;
+}

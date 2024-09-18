@@ -4,24 +4,29 @@
         <!-- alertmessages shows here -->
     </div>
     <div class="mb-3">
-        <input type="text" class="form-control" id="name" placeholder="Felhasználónév" ng-model="user.name">
+        <input type="text" class="form-control" id="name" placeholder="Felhasználónév" required>
     </div>
    
     <div class="mb-3">
-        <input type="email" class="form-control" id="email" placeholder="E-mail cím" ng-model="user.email">
+        <input type="email" class="form-control" id="email" placeholder="E-mail cím" required>
     </div>
    
     <div class="mb-3">
-        <input type="password" class="form-control" id="passwd" placeholder="Jelszó" ng-model="user.passwd">
+        <input type="tel" class="form-control" id="phone" name="phone" pattern="[0-9]{4}-[0-9]{3}-[0-9]{4}" required placeholder="Telcsi">
+    </div>
+
+    <div class="mb-3">
+        <input type="password" class="form-control" id="passwd" placeholder="Jelszó" required>
     </div>
    
     <div class="mb-3">
-        <input type="password" class="form-control" id="confirm" placeholder="Jelszó megerősítése" ng-model="user.confirm">
+        <input type="password" class="form-control" id="confirm" placeholder="Jelszó megerősítése" required>
     </div>
  
     <div class="mb-3 regBtnLine">
-        <label>Már van fiókod? <a href="#!/login">Bejelentkezés</a></label>
-        <button class="btn btn-primary mb-3" ng-controller="userCtrl" ng-click="register()">Regisztráció</button>
+        <label>Már van fiókod? <a href="#login">Bejelentkezés</a></label>
+        <button class="btn btn-primary mb-3" onclick="registration()">Regisztráció</button>
     </div>
 </div>
 </main>
+

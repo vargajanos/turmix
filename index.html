@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Somodi Konrád Turmixcombó</title>
     <link rel="stylesheet" href="Assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="Assets/css/style.css">
 </head>
@@ -24,6 +23,9 @@
                   <li class="nav-item lgdOut">
                     <a class="nav-link" href="#" onclick="render('registration')">Regisztráció</a>
                   </li>
+                  <li class="nav-item lgdAdm">
+                    <a class="nav-link" href="#" onclick="render('users');">Users</a>
+                  </li>
                   <li class="nav-item lgdIn">
                     <a class="nav-link" href="#" onclick="render('breakfast')">Reggeli</a>
                   </li>
@@ -34,11 +36,18 @@
                     <a class="nav-link" href="#" onclick="render('dinner')">Vacsora</a>
                   </li>
                   <li class="nav-item lgdIn">
-                    <a class="nav-link" href="#" onclick="render('logOut')">Kilépés</a>
+                    <a class="nav-link" href="#" onclick="render('recipes')">Saját receptek</a> 
                   </li>
-                  <li class="nav-item dropdown"ng-mouseover="isDropdownOpen = true" ng-mouseleave="isDropdownOpen = false" ng-class="{'show': isDropdownOpen}" >
-                    
-                    <div class="dropdown-menu" ng-class="{'show': isDropdownOpen}">
+                  <li class="nav-item lgdIn">
+                    <a class="nav-link" href="#" onclick="render('profile')">Profil</a>
+                  </li>
+                  <li class="nav-item lgdIn">
+                    <a class="nav-link" href="#" onclick="logout()">Kilépés</a>
+                  </li>
+
+
+
+                    <div class="dropdown-menu">
                         <a class="dropdown-item">Előétel</a>
                         <a class="dropdown-item">Főétel</a>
                         <a class="dropdown-item">Köret</a>
@@ -53,11 +62,18 @@
               </div>
             </div>
         </nav>
+        <section class="hero">
+          <div class="container">
+            <h1>Üdvözöljük a Weboldalon</h1>
+            <p>Ez a hero image szekció. Használja ki a lehetőségeket!</p>
+            <a href="#" class="btn btn-primary btn-lg">Tudjon meg többet</a>
+          </div>
+        </section>
         <main>
             
 
         </main>
-        <footer>répa</footer>
+        <footer></footer>
     </div>
 
     <script src="Assets/js/bootstrap.bundle.min.js"></script>
@@ -69,7 +85,6 @@
 
     <!-- controllers -->
     <script src="Controllers/userCtrl.js"></script>
-    <script src="Controllers/stepCrtl.js"></script>
 
 
 </body>

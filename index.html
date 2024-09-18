@@ -24,6 +24,9 @@
                   <li class="nav-item lgdOut">
                     <a class="nav-link" href="#" onclick="render('registration')">Regisztráció</a>
                   </li>
+                  <li class="nav-item lgdAdm">
+                    <a class="nav-link" href="#" onclick="render('users');">Users</a>
+                  </li>
                   <li class="nav-item lgdIn">
                     <a class="nav-link" href="#" onclick="render('breakfast')">Reggeli</a>
                   </li>
@@ -34,10 +37,17 @@
                     <a class="nav-link" href="#" onclick="render('dinner')">Vacsora</a>
                   </li>
                   <li class="nav-item lgdIn">
-                    <a class="nav-link" href="#" onclick="render('logOut')">Kilépés</a>
+                    <a class="nav-link" href="#" onclick="render('recipes')">Saját receptek</a> 
                   </li>
-                  <li class="nav-item dropdown"ng-mouseover="isDropdownOpen = true" ng-mouseleave="isDropdownOpen = false" ng-class="{'show': isDropdownOpen}" >
-                    
+                  <li class="nav-item lgdIn">
+                    <a class="nav-link" href="#" onclick="render('profile')">Profil</a>
+                  </li>
+                  <li class="nav-item lgdIn">
+                    <a class="nav-link" href="#" onclick="logout()">Kilépés</a>
+                  </li>
+
+
+
                     <div class="dropdown-menu" ng-class="{'show': isDropdownOpen}">
                         <a class="dropdown-item">Előétel</a>
                         <a class="dropdown-item">Főétel</a>
@@ -57,7 +67,7 @@
             
 
         </main>
-        <footer>répa</footer>
+        <footer></footer>
     </div>
 
     <script src="Assets/js/bootstrap.bundle.min.js"></script>
@@ -69,7 +79,6 @@
 
     <!-- controllers -->
     <script src="Controllers/userCtrl.js"></script>
-    <script src="Controllers/stepCrtl.js"></script>
 
 
 </body>

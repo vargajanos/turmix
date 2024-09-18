@@ -35,7 +35,9 @@ app.get('/', (req, res) => {
 app.post('/reg', (req, res) => {
 
     // kötelező adatok ellenőrzése
+
     if (!req.body.name || !req.body.email || !req.body.phone || !req.body.passwd || !req.body.confirm ){
+
        res.status(203).send('Nem adtál meg minden kötelező adatot!');
        return;
     }

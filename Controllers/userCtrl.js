@@ -13,8 +13,6 @@ function registration(){
     });
 }
 
-
-
 function login(){
     let user = {
         name: document.querySelector('#name').value,
@@ -25,13 +23,20 @@ function login(){
         console.log(res.data);
         if (res.status != 202){
             alert(res.data);
-            
             return;
         }
 
         loggedUser = res.data;
         localStorage.setItem('cookbook', JSON.stringify(loggedUser));
-
+        renderNavItems();
         render('breakfast');
     });
 }
+
+function logout(){
+    localStorage.removeItem('cookbook');
+    loggedUser = null;
+    renderNavItems();
+    render('login');
+}
+

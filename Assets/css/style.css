@@ -10,16 +10,15 @@ html, body {
     flex-direction: column;
 }
 body{
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
     
-    color: white;
+    color: rgb(0, 0, 0);
   
 }
  
-.navbar{
-    
-    background-color: #000000 !important;
-    /* box-shadow: rgb(100, 100, 100) 5px 0px 10px; */
+.navbar {
+    background-color: #ffffff !important;
+    box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.1), inset 4px -1px 4px rgba(0, 0, 0, 0.1); /* Belső árnyék */
     filter: drop-shadow(0 20px 13px rgb(0 0 0 / 0.03)) drop-shadow(0 8px 5px rgb(0 0 0 / 0.08));
     width: 100%;
 }
@@ -31,18 +30,27 @@ main {
 .navbar-nav{
     margin-left: auto;
 }
- 
+.card .heading div {
+    margin-bottom: 5px; /* Különbség a sorok között */
+}
+
+.card .heading strong {
+    color: #183D3D; /* Címkék színe */
+}
+
 .nav-item{
     padding: 2.5px;
     margin: 2.5px;
     border-radius:  10px 10px 10px 10px;
     background-color: #ffffff;
-    color: black !important;
+    color: rgb(255, 255, 255) !important;
+    transition: transform 0.3s ease;
 }
 
 .nav-item:hover {
-    background-color: #395248; /* Sötétebb zöld hover állapotban */
-    border-color: #395248; 
+    background-color: #c2c2c2; /* Sötétebb zöld hover állapotban */
+    border-color: #c2c2c2; 
+    transform: scale(0.98);
 }
 
 .nav-item:active {
@@ -132,23 +140,38 @@ footer {
 }
 
 
- .hero {
-        position: relative;
-        background-image:
+.hero {
+    position: relative;
+    background-image:
         linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-        url(
-'/Assets/img/hero.jpg');
-        background-size:cover;
-        background-position:center;
-        height: 95vh; 
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        text-align: center;
-        zoom: -5%;
-      }
-  
+        url('/Assets/img/hero.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 95vh; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    zoom: -5%;
+    overflow: hidden; /* Az overflow elrejtése a blur miatt */
+}
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 90px; /* Magasság, ahogy elmosódik */
+    background: rgb(255, 255, 255); /* Sötétebb háttér */
+    filter: blur(15px); /* Elmosódás mértéke */
+    pointer-events: none; /* Kattintások figyelmen kívül hagyása */
+    transform: translateY(50%); /* Az elmosódás felfelé tolása */
+    width: 200%; /* Az elmosódott háttér szélessége */
+    left: 50%; /* A pozicionálás középre állítása */
+    margin-left: -65vw; /* A bal margó a középre állításhoz */
+}
+
 .btn{
     background-color: #183D3D; 
     border-color: #183D3D; 
@@ -194,3 +217,64 @@ footer {
       .d-none{
         display: none;
     } 
+
+
+    .card {
+        width: 50%;
+        background: white;
+        padding: .4em;
+        border-radius: 6px;
+        margin: auto;
+        margin-top: 2%;
+        transition: transform 0.3s ease;
+      }
+      
+      .card-image {
+        background-color: rgb(236, 236, 236);
+        width: 100%;
+        height: 20vh;
+        border-radius: 6px 6px 0 0;
+      }
+      
+      .card:hover {
+        transform: scale(0.98);
+      }
+      
+      .category {
+        text-transform: uppercase;
+        font-size: 1.5em;
+        font-weight: 600;
+        color: #56806f;
+        padding: 10px 7px 0;
+      }
+      
+      .category:hover {
+        cursor: pointer;
+      }
+      
+      .heading {
+        font-weight: 600;
+        color: rgb(88, 87, 87);
+        padding: 7px;
+      }
+      
+      .heading:hover {
+        cursor: pointer;
+      }
+      
+      .author {
+        color: gray;
+        font-weight: 600;
+        font-size: 15px;
+        padding-top: 20px;
+      }
+      
+      .name {
+        font-weight: 600;
+      }
+      
+      .name:hover {
+        cursor: pointer;
+      }
+
+      

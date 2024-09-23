@@ -3,8 +3,14 @@
     margin: 0;
 }
  
+html, body {
+    height: 100%; /* Az oldal és a body teljes magassága */
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
 body{
-    background-color: rgb(24, 61, 61);
+    background-color: rgb(0, 0, 0);
     
     color: white;
   
@@ -12,13 +18,15 @@ body{
  
 .navbar{
     
-    background-color: #00000000 !important;
+    background-color: #000000 !important;
     /* box-shadow: rgb(100, 100, 100) 5px 0px 10px; */
     filter: drop-shadow(0 20px 13px rgb(0 0 0 / 0.03)) drop-shadow(0 8px 5px rgb(0 0 0 / 0.08));
     width: 100%;
 }
 
-
+main {
+    flex: 1; /* A main tartalom kitölti a maradék helyet */
+}
  
 .navbar-nav{
     margin-left: auto;
@@ -92,9 +100,7 @@ a{
     justify-content: space-between;
 }
  
-.regBtnLine label a{
-    color: #88AB8E !important;
-}
+
  
 .regBtnLine button{
     background-color: #777E78;
@@ -112,15 +118,17 @@ a{
     }
 }
 
-
-footer{
-    border-radius:  1rem;
+footer {
+    border-radius: 1rem;
     color: #777E78;
     background-color: #D9D9D9;
     text-align: center;
     padding: 25px;
     margin: 10px 0px;
     box-shadow: rgb(100, 100, 100) 5px 5px 10px;
+    position: relative; /* Sticky helyett relative */
+    bottom: 0; /* A lábléc az oldal aljára kerül */
+    width: 100%; /* Kitölti a teljes szélességet */
 }
 
 
@@ -132,7 +140,7 @@ footer{
 '/Assets/img/hero.jpg');
         background-size:cover;
         background-position:center;
-        height: 55vh; 
+        height: 95vh; 
         display: flex;
         align-items: center;
         justify-content: center;
@@ -182,3 +190,7 @@ footer{
 .hero .btn {
         font-size: 1.25rem;
       }
+
+      .d-none{
+        display: none;
+    } 

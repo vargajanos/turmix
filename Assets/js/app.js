@@ -19,7 +19,7 @@ footer.innerHTML = Company + ' | ' + Author + ' | 2024.';
 async function render(view){
     let main = document.querySelector('main');
     main.innerHTML = await (await fetch(`Views/${view}.html`)).text();
-
+       
     
 }
 
@@ -32,6 +32,7 @@ if (localStorage.getItem('cookbook')){
 }
 
 function renderNavItems(){
+  
     let lgdOutNavItems = document.querySelectorAll('.lgdOut');
     let lgdInNavItems = document.querySelectorAll('.lgdIn');
     let admNavItems = document.querySelectorAll('.lgdAdm');
@@ -67,4 +68,7 @@ function renderNavItems(){
     lgdOutNavItems.forEach(item => {
         item.classList.add('d-none');
     });
+
+
+   
 }

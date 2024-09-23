@@ -1,5 +1,57 @@
+<style>
+    body {
+        background-image:
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.849)),
+        url('/Assets/img/registration.jpg');
+        background-size: cover;
+        background-position: center;
+        height: 100%; 
+       
+    }
+
+    .form-container{
+        margin: auto;
+        width: 40% !important;
+    }
+
+    .form-container {
+        margin: auto;
+        width: 40% !important;
+    }
+
+    .btn-primary {
+        width: 35%;
+        height: 50%;
+        margin-left: auto;
+        
+        font-size: 4vw; /* A gomb szöveg mérete a nézet szélességéhez igazodik */
+    }
+
+    /* Mobil eszközökhöz vagy kisebb képernyőkhöz médiakérdés */
+    @media (max-width: 768px) {
+        .form-container {
+            width: 80% !important; /* Form szélesség mobilhoz igazítva */
+        }
+
+        .btn-primary {
+            width: 50%;  /* Gomb szélessége mobilon */
+            font-size: 5vw; /* Kisebb képernyőn nagyobb szövegméret */
+        }
+    }
+
+    /* Nagyobb képernyőkhöz médiakérdés */
+    @media (min-width: 1200px) {
+        .btn-primary {
+            font-size: 2vw; /* Nagy képernyőn kisebb szövegméret */
+        }
+    }
+
+  
+</style>
+
+
 <div class="form-container" >
-    <h1>Regisztráció</h1>
+    <h1 style="margin-left: auto; margin-right: auto; margin-bottom: 5%;">Regisztráció</h1>
     <div class="alert alert-danger d-none" role="alert" id="alertBox">
         <!-- alertmessages shows here -->
     </div>
@@ -23,8 +75,12 @@
         <input type="password" class="form-control" id="confirm" placeholder="Jelszó megerősítése" required>
     </div>
  
-    
-        <button class="btn btn-primary mb-3" onclick="registration()">Regisztráció</button>
+
+    <div class="mb-3 regBtnLine">
+        <label>Már van fiókod? <a href="#login">Bejelentkezés</a></label>
+        <button class="btn btn-primary mb-3" style="width: 35%; height: 50%; font-size: 120%; margin-left: auto;" onclick="registration()">Regisztráció</button>
+    </div>
+
 </div>
 </main>
 

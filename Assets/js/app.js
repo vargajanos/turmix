@@ -19,22 +19,14 @@ footer.innerHTML = Company + ' | ' + Author + ' | 2024.';
 async function render(view){
     let main = document.querySelector('main');
     main.innerHTML = await (await fetch(`Views/${view}.html`)).text();
-       
-    switch(view){
-        case 'profile': {
-            getMe();
-            break;
-        }
-        case 'users': {
-            getUsers();
-            break;
-        }
-        case 'steps':{
-            getStepDatas();
-            break;
-        }
 
-    }
+    
+    switch(view){
+        case 'breakfast': {
+            reggeli();
+            break;
+        }}
+
 }
 
 

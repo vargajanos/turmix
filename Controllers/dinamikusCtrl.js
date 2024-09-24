@@ -1,8 +1,14 @@
-function reggeli() {
-    // Receptek lekérdezése az adatbázisból
-    axios.get('http://localhost:3000/recipes/1')
+
+
+function recept(categoryID) {
+axios.get(`http://localhost:3000/recipes`)
         .then(function(response) {
-            let receptek = response.data; // Receptek tömb feltöltése a lekért adatokkal
+            let recept = response.data; 
+
+    // Receptek lekérdezése az adatbázisból
+    axios.get(`http://localhost:3000/recipes/${categoryID}`)
+        .then(function(response) {
+            let receptek = response.data; // 
             
             // Az összes felhasználó lekérdezése
             axios.get('http://localhost:3000/users')
@@ -21,14 +27,17 @@ function reggeli() {
                             <div><strong>Elkészítési idő:</strong> ${recipe.time} perc</div>
                             <div><strong>Hozzávalók:</strong> ${recipe.additions}</div>
                             <div><strong>Kalória:</strong> ${recipe.calory} kcal</div>
+                            <div style="display: none;"><strong>ID:</strong> ${recipe.ID}</div>
                         `;
+
+                       
                         
                         let card = document.createElement("div");
                         card.classList.add("card");
                         
                         // Aszinkron eseménykezelő
                         card.onclick = function() { 
-                            smallrecipe(recipe.id); // Meghívja a receptet ID alapján
+                            smallrecipe(recipe.ID)
                         };
                         
                         // Card image elem létrehozása
@@ -85,9 +94,14 @@ function reggeli() {
         .catch(function(error) {
             console.error('Hiba történt a receptek lekérdezése során:', error);
         });
+
+})
+.catch(function(error) {
+    console.error('Hiba történt a receptek lekérdezése során:', error);
+});
 }
 
-function smallrecipe(id) {
+/*function smallrecipe(id) {
     // Egy konkrét recept lekérdezése az ID alapján
     axios.get(`http://localhost:3000/recipes/${id}`)
         .then(function(response) {
@@ -104,14 +118,14 @@ function smallrecipe(id) {
                 <button onclick="goBack()">Vissza a receptekhez</button>
             </div>
             `;
-
+            let div1 = document.querySelector('.keret');
             // Új div elem létrehozása és a recept tartalom beillesztése
             let div2 = document.createElement("div");
             div2.innerHTML = text;
 
             // A recept megjelenítése a kereten belül
-            let div1 = document.querySelector('#keret');
-            div1.innerHTML = ''; // Ürítjük a keret tartalmát, hogy ne legyen többszörös megjelenítés
+            
+           // div1.innerHTML = ''; // Ürítjük a keret tartalmát, hogy ne legyen többszörös megjelenítés
             div1.appendChild(div2);
         })
         .catch(function(error) {
@@ -123,3 +137,4 @@ function smallrecipe(id) {
 function goBack() {
     window.location.reload(); // Az oldal újratöltése, hogy visszatérjünk a kártya nézethez
 }
+*/

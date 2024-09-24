@@ -392,24 +392,8 @@ app.get('/me/:id', logincheck,(req, res) => {
  });
 
 
- app.get('/steps/:userID', logincheck, (req, res) => {
-  if (!req.params.userID) {
-    res.status(203).send('Hiányzó azonosító!');
-    return;
-  }
 
-  pool.query(`SELECT * FROM stepdatas WHERE userID='${req.params.userID}'`, (err, results) => {
-    if (err){
-      res.status(500).send('Hiba történt az adatbázis lekérés közben!');
-      return;
-    }
-
-    res.status(200).send(results);
-    return;
-
-  });
-
-});// jogosultság ellenőrzése
+// jogosultság ellenőrzése
 function admincheck(req, res, next){
   let token = req.header('Authorization');
   
@@ -446,6 +430,26 @@ function admincheck(req, res, next){
       return;
     });
   });
+
+
+
+  app.get('/recipes/:id', (req, res) => {
+
+    if (!req.params.id) {
+      res.status(203).send('Hiányzó azonosító!');
+      return;
+    }
+  
+    pool.query(`SELECT * FROM recipes WHERE ID='${req.params.id}'`, (err, results) => {
+      if (err){
+        res.status(500).send('Hiba történt az adatbázis lekérés közben!');
+        return;
+      }
+      res.status(200).send(results);
+      return;
+    });
+  });
+
 
 app.listen(port, () => {
   //console.log(process.env) ;

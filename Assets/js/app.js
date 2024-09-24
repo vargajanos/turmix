@@ -25,6 +25,10 @@ async function render(view){
         case 'breakfast': {
             reggeli();
             break;
+        }
+        case 'smallrecipe': {
+            smallrecipe();
+            break;
         }}
 
 }

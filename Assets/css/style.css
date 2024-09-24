@@ -226,13 +226,21 @@ footer {
         border-radius: 6px;
         margin: auto;
         margin-top: 2%;
-        transition: transform 0.3s ease;
+        transition: transform 0.3s ease; 
+        position: relative; 
       }
       
+    .recipe-image {
+        width: 100%; /* Kép szélessége a card-image teljes szélességére */
+        height: auto; /* Automatikus magasság */
+        display: block; /* Nincs margó */
+    }
+
       .card-image {
         background-color: rgb(236, 236, 236);
-        width: 100%;
-        height: 20vh;
+        width: 100%; /* Az egész card szélessége */
+        height: 50vh; /* Automatikus magasság */
+        overflow:hidden; /* Felesleges tartalom elrejtése */
         border-radius: 6px 6px 0 0;
       }
       

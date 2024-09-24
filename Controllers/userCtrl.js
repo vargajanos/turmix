@@ -29,6 +29,7 @@ function login(){
         loggedUser = res.data;
         localStorage.setItem('cookbook', JSON.stringify(loggedUser));
         renderNavItems();
+        console.log(loggedUser[0].ID);
         render('breakfast');
     });
 }
@@ -40,3 +41,11 @@ function logout(){
     render('login');
 }
 
+function getMe(){
+    axios.get(`${serverUrl}/me/${loggedUser[0].ID}`, authorize()).then(res => {
+        document.querySelector('#name').value = res.data[0].name;
+        document.querySelector('#email').value = res.data[0].email;
+        document.querySelector('#phone').value = res.data[0].phone;
+        document.querySelector('#role').value = res.data[0].role;
+    });
+}

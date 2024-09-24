@@ -121,6 +121,22 @@ app.post('/login', (req, res) => {
     });
  
   });
+
+  // felhasználók listája (CSAK ADMIN)
+app.get('/users', (req, res) => {
+
+  //TODO: csak admin joggal lehet - később
+
+  pool.query(`SELECT ID, name, email, role FROM users`, (err, results) => {
+    if (err){
+      res.status(500).send('Hiba történt az adatbázis lekérés közben!');
+      return;
+    }
+    res.status(200).send(results);
+    return;
+  });
+});
+
  
 // felhasználó adatainak lekérése id alapján (CSAK ADMIN)
 app.get('/users/:id', logincheck, (req, res) => {
@@ -376,24 +392,63 @@ app.get('/me/:id', logincheck,(req, res) => {
  });
 
 
- app.get('/steps/:userID', logincheck, (req, res) => {
-  if (!req.params.userID) {
-    res.status(203).send('Hiányzó azonosító!');
+
+// jogosultság ellenőrzése
+function admincheck(req, res, next){
+  let token = req.header('Authorization');
+  
+  if (!token){
+    res.status(400).send('Jelentkezz be!');
     return;
   }
 
-  pool.query(`SELECT * FROM stepdatas WHERE userID='${req.params.userID}'`, (err, results) => {
-    if (err){
-      res.status(500).send('Hiba történt az adatbázis lekérés közben!');
+  pool.query(`SELECT role FROM users WHERE ID='${token}'`, (err, results) => {
+    if (results.length == 0){
+      res.status(400).send('Hibás authentikáció!');
+      return;
+    } 
+    if (results[0].role != 'admin'){
+      res.status(400).send('Nincs jogosultságod!');
       return;
     }
-
-    res.status(200).send(results);
-    return;
-
+    next();
   });
 
-});
+  return;
+}
+  // felhasználók listája (CSAK ADMIN)
+  app.get('/recipes', (req, res) => {
+
+    
+  
+    pool.query(`SELECT * FROM recipes`, (err, results) => {
+      if (err){
+        res.status(500).send('Hiba történt az adatbázis lekérés közben!');
+        return;
+      }
+      res.status(200).send(results);
+      return;
+    });
+  });
+
+
+
+  app.get('/recipes/:id', (req, res) => {
+
+    if (!req.params.id) {
+      res.status(203).send('Hiányzó azonosító!');
+      return;
+    }
+  
+    pool.query(`SELECT * FROM recipes WHERE ID='${req.params.id}'`, (err, results) => {
+      if (err){
+        res.status(500).send('Hiba történt az adatbázis lekérés közben!');
+        return;
+      }
+      res.status(200).send(results);
+      return;
+    });
+  });
 
 app.get('/users', admincheck, (req, res) => {
 

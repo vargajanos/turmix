@@ -25,7 +25,12 @@ async function render(view){
         case 'breakfast': {
             reggeli();
             break;
-        }}
+        }
+        case 'profile': {
+            getMe();
+            break;
+        }
+    }
 
 }
 
@@ -37,51 +42,61 @@ if (localStorage.getItem('cookbook')){
     render('login');
 }
 
-function renderNavItems(){
-  
+function renderNavItems() {
+ 
     let lgdOutNavItems = document.querySelectorAll('.lgdOut');
     let lgdInNavItems = document.querySelectorAll('.lgdIn');
     let admNavItems = document.querySelectorAll('.lgdAdm');
-
-    // ha nem vagyunk bejelentkezve
-    if (loggedUser == null){
-        lgdInNavItems.forEach(item =>{
-            item.classList.add('d-none');
-        });
+ 
+    if (!loggedUser ) {
         lgdOutNavItems.forEach(item => {
             item.classList.remove('d-none');
         });
         admNavItems.forEach(item => {
             item.classList.add('d-none');
         });
-        return;
-    }
-
-    // ha be vagyunk  jelentkezve és
-
-    // admin vagyunk
-    if (loggedUser.role == 'admin'){
-        admNavItems.forEach(item => {
-            item.classList.remove('d-none');
+        lgdInNavItems.forEach(item => {
+            item.classList.add('d-none');
         });
     }
  
-    // user vagyunk
-    lgdInNavItems.forEach(item => {
-        item.classList.remove('d-none');
-    });
-
-    lgdOutNavItems.forEach(item => {
-        item.classList.add('d-none');
-    });
-
-
-    
+    if (loggedUser && loggedUser[0].role === 'admin') {
+        admNavItems.forEach(item => {
+            item.classList.remove('d-none');
+        });
+ 
+        lgdInNavItems.forEach(item => {
+            item.classList.remove('d-none');
+        });
+ 
+        lgdOutNavItems.forEach(item => {
+            item.classList.add('d-none');
+        });
+    }
+ 
+    if (loggedUser && loggedUser[0].role == 'user') {
+        admNavItems.forEach(item => {
+            item.classList.add('d-none');
+        });
+ 
+        lgdInNavItems.forEach(item => {
+            item.classList.remove('d-none');
+        });
+ 
+        lgdOutNavItems.forEach(item => {
+            item.classList.add('d-none');
+        });
+    }
 }
+ 
 
 function authorize(){
+    console.log(loggedUser[0].ID + "Konrád baszki")
     let res = {
          headers: { "Authorization": loggedUser[0].ID  }
     }
     return res;
 }
+
+
+renderNavItems();

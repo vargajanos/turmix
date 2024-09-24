@@ -395,6 +395,43 @@ app.get('/me/:id', logincheck,(req, res) => {
 
 });
 
+app.get('/users', admincheck, (req, res) => {
+
+  //TODO: csak admin joggal lehet - később
+
+  pool.query(`SELECT ID, name, email, phone,  role FROM users`, (err, results) => {
+    if (err){
+      res.status(500).send('Hiba történt az adatbázis lekérés közben!');
+      return;
+    }
+    res.status(200).send(results);
+    return;
+  });
+});
+
+
+function admincheck(req, res, next){
+  let token = req.header('Authorization');
+  
+  if (!token){
+    res.status(400).send('Jelentkezz be!');
+    return;
+  }
+
+  pool.query(`SELECT role FROM users WHERE ID='${token}'`, (err, results) => {
+    if (results.length == 0){
+      res.status(400).send('Hibás authentikáció!');
+      return;
+    } 
+    if (results[0].role != 'admin'){
+      res.status(400).send('Nincs jogosultságod!');
+      return;
+    }
+    next();
+  });
+
+  return;
+}
 
 app.listen(port, () => {
   //console.log(process.env) ;

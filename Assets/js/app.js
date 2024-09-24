@@ -23,9 +23,34 @@ async function render(view){
     
     switch(view){
         case 'breakfast': {
-            reggeli();
+            
+            recept(1);
             break;
-        }}
+        }
+
+        case 'dinner': {
+            recept(6);
+            break;
+        }
+        case 'appetizer': {
+            recept(1);
+            break;
+        }
+        case 'dessert': {
+            recept(5);
+            break;
+        }
+        case 'maincCourse': {
+            recept(2);
+            break;
+        }
+        case 'sideDish': {
+            recept(3);
+            break;
+        }
+    
+    
+    }
 
 }
 

@@ -100,6 +100,7 @@ app.post('/reg', (req, res) => {
   //belépés
 app.post('/login', (req, res) => {
  
+
     console.log(req.body);
     if (!req.body.name || !req.body.passwd) {
       res.status(203).send('Hiányzó adatok!');
@@ -263,7 +264,6 @@ app.delete('/recipes/:id',(req, res) => {
 });
 
 
-
 // receptek módosítása - ok
 
 app.patch('/recipes/:id',(req, res) => {
@@ -295,7 +295,6 @@ app.patch('/recipes/:id',(req, res) => {
 });
 
 
-
 // saját recept felvétele - ok
 
 app.post('/recipes/:userID', (req, res) => {
@@ -320,7 +319,97 @@ app.post('/recipes/:userID', (req, res) => {
   );
 });
 
-// jogosultság ellenőrzése
+// felhasználó módosítása
+
+app.patch('/users/:id', logincheck,(req, res) => {
+  
+  if (!req.params.id) {
+    res.status(203).send('Hiányzó azonosító!');
+    return;
+  }
+
+  if (!req.body.name || !req.body.email || !req.body.role) {
+    res.status(203).send('Hiányzó adatok!');
+    return;
+  }
+
+  //TODO: ne módosíthassa már meglévő email címre az email címét
+
+  pool.query(`UPDATE users SET name='${req.body.name}', email='${req.body.email}', role='${req.body.role}' WHERE ID='${req.params.id}'`, (err, results) => {
+    if (err){
+      res.status(500).send('Hiba történt az adatbázis lekérés közben!');
+      return;
+    }
+
+    if (results.affectedRows == 0){
+      res.status(203).send('Hibás azonosító!');
+      return;
+    }
+
+    res.status(200).send('Felhasználó adatok módosítva!');
+    return;
+  });
+});
+
+
+app.get('/users', logincheck, (req, res) => {
+
+  //TODO: csak admin joggal lehet - később
+
+  pool.query(`SELECT ID, name, email, role FROM users`, (err, results) => {
+    if (err){
+      res.status(500).send('Hiba történt az adatbázis lekérés közben!');
+      return;
+    }
+    res.status(200).send(results);
+    return;
+  });
+});
+ 
+
+app.get('/me/:id', logincheck,(req, res) => {
+  //TODO: id-t megoldani backenden majd, hogy ne kelljen itt átadni
+   if (!req.params.id) {
+     res.status(203).send('Hiányzó azonosító!');
+     return;
+   }
+ 
+   pool.query(`SELECT name, email, role, phone FROM users WHERE ID='${req.params.id}'`, (err, results) =>{ 
+     if (err){
+       res.status(500).send('Hiba történt az adatbázis lekérés közben!');
+       return;
+     }
+ 
+     if (results.length == 0){
+       res.status(203).send('Hibás azonosító!');
+       return;
+     }
+ 
+     res.status(202).send(results);
+     return;
+ 
+   });
+ });
+
+
+ app.get('/steps/:userID', logincheck, (req, res) => {
+  if (!req.params.userID) {
+    res.status(203).send('Hiányzó azonosító!');
+    return;
+  }
+
+  pool.query(`SELECT * FROM stepdatas WHERE userID='${req.params.userID}'`, (err, results) => {
+    if (err){
+      res.status(500).send('Hiba történt az adatbázis lekérés közben!');
+      return;
+    }
+
+    res.status(200).send(results);
+    return;
+
+  });
+
+});// jogosultság ellenőrzése
 function admincheck(req, res, next){
   let token = req.header('Authorization');
   
@@ -357,7 +446,7 @@ function admincheck(req, res, next){
       return;
     });
   });
- 
+
 app.listen(port, () => {
   //console.log(process.env) ;
   console.log(`Server listening on port ${port}...`);

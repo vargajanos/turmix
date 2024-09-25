@@ -44,12 +44,19 @@ axios.get(`http://localhost:3000/recipes`)
                         let cardImage = document.createElement("div");
                         cardImage.classList.add("card-image");
                         
-                        // Kép beszúrása
-                        let image = document.createElement("img");
-                        image.src = `./Assets/recipes/${recipe.ID}.jpg`; 
-                        image.alt = recipe.title;
-                        image.classList.add("recipe-image"); 
-                        cardImage.appendChild(image); 
+                       // Kép beszúrása
+let image = document.createElement("img");
+image.src = `./Assets/recipes/${recipe.ID}.jpg`; 
+image.alt = recipe.title;
+image.classList.add("recipe-image"); 
+
+// Ha a kép nem töltődik be, cserélje le egy alapértelmezett képre
+image.onerror = function() {
+    this.src = './Assets/recipes/default.jpg'; // Alapértelmezett kép
+};
+
+cardImage.appendChild(image);
+
 
                         // Category elem létrehozása
                         let category = document.createElement("div");

@@ -61,8 +61,6 @@ function smallrecipe(id){
                 document.querySelector('#additions').value = res.data[0].additions;
                 document.querySelector('#calory').value = res.data[0].calory;
 
-
-
                 document.querySelector('#goBack').onclick = function() {goBack()};
             });
         });

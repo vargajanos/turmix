@@ -24,7 +24,7 @@ async function render(view){
     switch(view){
         case 'breakfast': {
             
-            recept(1);
+            recept(4);
             break;
         }
 

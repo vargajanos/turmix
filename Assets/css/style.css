@@ -287,3 +287,143 @@ footer {
       }
 
       
+
+      /* ------------ SAJÁT RECEPTEK CSS ----------*/
+
+.longbob-image{
+    max-height: 400px;
+    max-width: 90%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Árnyék hozzáadása a képhez */
+    
+}
+
+.writecontent{
+
+    box-shadow: rgb(63, 63, 63) 5px 5px 10px;
+   
+    max-width: 90%;
+    min-width: 90%;
+    max-height: 100%;
+    min-height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+margin-top: 5%;
+margin-bottom: 2%;
+        background: white;
+        padding: .4em;
+        border-radius: 6px;
+        transition: transform 0.3s ease; 
+        position: relative; 
+  
+}
+
+.felso3{
+    display: flex;
+    flex-direction: row;
+    padding-top: 1%;
+
+}
+
+
+
+    
+    
+
+@media screen and (max-width: 767px) {
+    
+}
+
+.felhasznalogomb{
+    padding-left: 2.5%;
+    padding-top: 2%;
+    padding-right: 2.5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.selectes{
+    max-width: 20%; 
+    margin: auto;
+}
+.meglevotext{
+    padding: 2% 5% 1%;
+     font-size: 170%;
+}
+
+@media screen and (max-width: 449px) {
+    .felhasznalogomb {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .gombok {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        padding-top: 5%;
+        
+        
+    }
+    .felso3 {
+        
+        display: flex;
+        flex-direction: column;
+       
+        align-items: center; /* Tartalom központosítása a függőleges tengely mentén */
+        
+    }
+
+    .selectes{
+      
+        max-width: 90%; 
+        min-width: 90%; 
+        
+    }
+        
+    .egygomb{
+        width: 80%; /* Változtathatod a gombok szélességét a kívánt méretre */
+        padding-top: 5%;
+        
+    }
+    .meglevotext{
+        padding: 5% 5% 5%;
+        font-size:150%;
+    }
+        
+}
+.zold{
+    background-color: #183D3D; 
+    border-color: #183D3D; 
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3), -3px -3px 5px rgba(255, 255, 255, 0.3);
+    font-size: large;
+}
+.piros{
+    background-color: #F15A5A; 
+    border: #F15A5A;
+    font-size: large;
+}
+
+.zold:hover {
+    background-color: rgb(4, 22, 11); /* Sötétebb zöld hover állapotban */
+    border-color: rgb(4, 22, 11); 
+}
+
+.zold:active {
+    background-color: rgb(4, 22, 11) !important; /* Sötétebb zöld hover állapotban */
+    border-color: rgb(4, 22, 11) !important; 
+    transform: scale(0.95); /* Kisebb méret kattintás alatt */
+}
+
+.piros:hover{
+    background-color: #c14a4a; 
+    border: #c14a4a;
+    
+}
+
+/*-------------------------------------------*/
+
+@media screen and (min-width: 1001px) {
+    .rolunknevek{
+        padding-right: 5%;
+    }
+}

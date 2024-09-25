@@ -319,6 +319,41 @@ app.post('/recipes/:userID', (req, res) => {
   );
 });
 
+
+
+app.get('/recipes/:userID', (req, res) => {
+  const userID = req.params.userID;
+
+  if (!userID) {
+    res.status(400).send('Hiányzó azonosító!');
+    return;
+  }
+
+  console.log('Lekérdezés indítása userID-vel:', userID); // Logolás
+
+  pool.query(
+    `SELECT * FROM recipes WHERE userID = ?`,
+    [userID],
+    (err, results) => {
+      if (err) {
+        console.error('Hiba:', err);
+        res.status(500).send('Hiba történt az adatbázis lekérés közben!');
+        return;
+      }
+
+      console.log('Lekérdezés eredménye:', results); // Logolás
+
+      if (results.length === 0) {
+        res.status(404).send('Nem található recept a megadott felhasználóhoz!');
+        return;
+      }
+
+      res.status(200).json(results);
+    }
+  );
+});
+
+
 // felhasználó módosítása
 
 app.patch('/users/:id', logincheck,(req, res) => {
@@ -445,6 +480,12 @@ function admincheck(req, res, next){
         res.status(500).send('Hiba történt az adatbázis lekérés közben!');
         return;
       }
+
+      if (results.length == 0){
+        res.status(203).send('Hibás azonosító!');
+        return;
+      }
+
       res.status(200).send(results);
       return;
     });
@@ -454,7 +495,7 @@ app.get('/users', admincheck, (req, res) => {
 
   //TODO: csak admin joggal lehet - később
 
-  pool.query(`SELECT ID, name, email, phone,  role FROM users`, (err, results) => {
+  pool.query(`SELECT ID, name, email, phone, role FROM users`, (err, results) => {
     if (err){
       res.status(500).send('Hiba történt az adatbázis lekérés közben!');
       return;

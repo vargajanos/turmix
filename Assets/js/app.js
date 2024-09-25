@@ -49,6 +49,11 @@ async function render(view){
             recept(3);
             break;
         }
+
+        case 'recipes': {
+            sajatReceptek(loggedUser[0].ID);
+            break;
+        }
     
     
 

@@ -50,18 +50,3 @@ function getMe(){
     });
 }
 
-function smallrecipe(id){
-    
-    render('smallrecipe').then(()=>{
-            axios.get(`${serverUrl}/recipes/${id}`, authorize()).then(res => {
-                document.querySelector('#title').value = res.data[0].title;
-                document.querySelector('#catgory').value = res.data[0].catgory;
-                document.querySelector('#description').value = res.data[0].description;
-                document.querySelector('#time').value = res.data[0].time;
-                document.querySelector('#additions').value = res.data[0].additions;
-                document.querySelector('#calory').value = res.data[0].calory;
-
-                document.querySelector('#goBack').onclick = function() {goBack()};
-            });
-        });
-    }

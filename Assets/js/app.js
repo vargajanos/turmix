@@ -28,7 +28,6 @@ async function render(view){
             break;
         }
 
-
         case 'dinner': {
             recept(6);
             break;
@@ -55,7 +54,15 @@ async function render(view){
             break;
         }
     
-    
+        case 'profile': {
+            getMe();
+            break;
+        }
+
+        case 'users': {
+            getUsers();
+            break;
+        }
 
     }
 
@@ -118,7 +125,7 @@ function renderNavItems() {
  
 
 function authorize(){
-    console.log(loggedUser[0].ID + "Konrád baszki")
+    console.log(loggedUser[0].ID + "Jókó szólsz!")
     let res = {
          headers: { "Authorization": loggedUser[0].ID  }
     }

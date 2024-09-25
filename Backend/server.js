@@ -127,7 +127,7 @@ app.get('/users', (req, res) => {
 
   //TODO: csak admin joggal lehet - később
 
-  pool.query(`SELECT ID, name, email, role FROM users`, (err, results) => {
+  pool.query(`SELECT ID, name, email, phone, role FROM users`, (err, results) => {
     if (err){
       res.status(500).send('Hiba történt az adatbázis lekérés közben!');
       return;
@@ -146,7 +146,7 @@ app.get('/users/:id', logincheck, (req, res) => {
      return;
    }
  
-   pool.query(`SELECT name, email,phone, role, status FROM users WHERE ID='${req.params.id}'`, (err, results) =>{
+   pool.query(`SELECT name, email, phone, role, status FROM users WHERE ID='${req.params.id}'`, (err, results) =>{
      if (err){
        res.status(500).send('Hiba történt az adatbázis lekérés közben!');
        return;
@@ -387,11 +387,13 @@ app.patch('/users/:id', logincheck,(req, res) => {
 });
 
 
-app.get('/users', logincheck, (req, res) => {
+
+
+app.get('/users', admincheck, (req, res) => {
 
   //TODO: csak admin joggal lehet - később
 
-  pool.query(`SELECT ID, name, email, role FROM users`, (err, results) => {
+  pool.query(`SELECT ID, name, email, phone, role FROM users`, (err, results) => {
     if (err){
       res.status(500).send('Hiba történt az adatbázis lekérés közben!');
       return;
@@ -466,8 +468,6 @@ function admincheck(req, res, next){
     });
   });
 
-
-
   app.get('/recipes/:id', (req, res) => {
 
     if (!req.params.id) {
@@ -491,6 +491,8 @@ function admincheck(req, res, next){
     });
   });
 
+
+
 app.get('/users', admincheck, (req, res) => {
 
   //TODO: csak admin joggal lehet - később
@@ -504,6 +506,7 @@ app.get('/users', admincheck, (req, res) => {
     return;
   });
 });
+
 
 
 function admincheck(req, res, next){
@@ -528,6 +531,10 @@ function admincheck(req, res, next){
 
   return;
 }
+
+
+
+
 
 app.listen(port, () => {
   //console.log(process.env) ;

@@ -9,7 +9,7 @@ function registration(){
     }
 
     axios.post(`${serverUrl}/reg`, newUser).then(res => {
-        alert(res.data);
+        render('lunch');
     });
 }
 
@@ -30,7 +30,7 @@ function login(){
         localStorage.setItem('cookbook', JSON.stringify(loggedUser));
         renderNavItems();
         console.log(loggedUser[0].ID);
-        render('breakfast');
+        render('lunch');
     });
 }
 

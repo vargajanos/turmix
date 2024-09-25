@@ -1,6 +1,71 @@
-<div class="form-container" >
-    <h1>Saját receptek</h1>
-    
-    
-</div>
-</main>
+<div class="formcontainer"> 
+    <div class="heroImg mb-3">
+      <img src="../assets/img/sajatReceptek.jpg" alt="">
+    </div> 
+<div style="width: 90%; margin: auto;" class="writecontent">
+  
+    <p style="  padding-top: 2%;padding-bottom: 2%; padding-left: 2%;"> <strong style="font-size: large;">Az oldalon lehetőséged van saját recepteid felvételére</strong> , hogy megoszd azokat más felhasználókkal.Ezzel lehetőséged nyílik arra, hogy a saját kulináris kreativitásodat és ízlésedet megoszd a közösséggel, és inspirálj másokat új és izgalmas fogások kipróbálására. <br><br><strong style="font-size: large;">Továbbá láthatod és törölheted a saját recepteidet.</strong> Ezáltal teljes kontrollt gyakorolhatsz a megosztott receptjeid felett, és könnyedén rendezheted, illetve távolíthatod el azokat a saját felhasználói felületeden.</p>
+
+    </div><div class="writecontent">   
+      <div class="felhasznalogomb">
+        <div class="felhasznalo">
+          <img src="../assets/img/user.jpg" alt="UserPhoto" id="logo">
+         </div> 
+       <div class="gombok" class="egygomb"> 
+        <button class="btn btn-primary mb-3 zold" onclick="upload()" >Feltöltés</button>
+      </div>
+       
+      </div>
+      <div class="alert alert-danger d-none" role="alert" id="alertBox" style="width: 90%; margin: auto; margin-bottom: 5%; margin: 5%;">
+        <!-- alertmessages shows here -->
+    </div>
+    <div class="alert alert-success d-none" role="alert" id="successBox" style="width: 90%; margin: auto; margin-bottom: 5%; margin: 5%;">
+      <!-- alertmessages shows here -->
+  </div>
+
+      <div class="felso3">
+        <div class="input-group mb-3 selectes " >
+          <select class="form-select" id="Type1Uj">
+            <option selected value="0">Válassz...</option>
+            <option value="4">Reggeli</option>
+            <option value="6">Vacsora</option>>
+            <option value="1">Előétel</option>
+            <option value="2">Főétel</option>
+            <option value="3">Köret</option>
+            <option value="5">Desszert</option>
+          </select>
+
+        </div>
+        <div class="input-group mb-3 selectes" style="padding-right: 2%;">
+          <input type="text" class="form-control" placeholder="Étel neve" aria-label="Username" aria-describedby="basic-addon1" id="newfoodname">
+        </div>
+        <div class="input-group mb-3 selectes"   style="padding-right: 2%;">
+          <input type="number" class="form-control" placeholder="Elkészítési idő (perc)" aria-label="Username" aria-describedby="basic-addon1" id="newfoodtime">
+        </div>
+      
+        <div class="input-group mb-3 selectes"  style="padding-right: 2%;">
+          <input type="number" class="form-control" placeholder="Kalória (cal)" aria-label="Username" aria-describedby="basic-addon1" id="newfoodcalory">
+        </div>
+      </div>
+      <br>
+     
+      <br>
+      <div class="col-md-12" style="margin-left: 2.5%; display: flex; width: 100%;">
+        <!-- Flexbox használatával -->
+        <textarea type="text" class="form-control nagyinput" 
+                  style="max-height: 500px; min-height: 500px; width: 30%; margin-right: 2%;" 
+                  placeholder="Hozzávalók" aria-label="Username" aria-describedby="basic-addon1" id="newfoodadditions"></textarea>
+        
+        <textarea class="form-control nagyinput" 
+                  style="max-height: 500px; min-height: 500px; width: 63%;" 
+                  placeholder="Ide írd a receptet..." id="newrecipe"></textarea>
+      </div>
+      
+
+      
+      
+      <div class="meglevotext">Már meglévő receptjeid:</div>
+      
+     <div class="dinamika" style="margin: auto; width: 95%;" ></div>
+
+  </div>

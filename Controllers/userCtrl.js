@@ -19,7 +19,7 @@ function login(){
         passwd: document.querySelector('#passwd').value
     }
 
-    axios.post(`${serverUrl}/login`, user).then(res =>{
+    axios.post(`${serverUrl}/login`,  user).then(res =>{
         console.log(res.data);
         if (res.status != 202){
             alert(res.data);
@@ -60,8 +60,6 @@ function smallrecipe(id){
                 document.querySelector('#time').value = res.data[0].time;
                 document.querySelector('#additions').value = res.data[0].additions;
                 document.querySelector('#calory').value = res.data[0].calory;
-
-
 
                 document.querySelector('#goBack').onclick = function() {goBack()};
             });

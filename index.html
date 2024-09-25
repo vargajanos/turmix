@@ -11,7 +11,7 @@
   
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" style="color: white !important; font-size: larger; font-weight: bold;" href="#">Turmix</a>
+            <a class="navbar-brand" style="color: black !important; font-size: larger; font-weight: bold;" href="#">Turmix</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -26,13 +26,23 @@
                     <li class="nav-item lgdAdm">
                         <a class="nav-link" href="#" onclick="render('users')">Users</a>
                     </li>
-                    <li class="nav-item lgdIn">
+                    <li class="nav-item">
                         <a class="nav-link" href="#" onclick="render('breakfast')">Reggeli</a>
                     </li>
-                    <li class="nav-item lgdIn">
-                        <a class="nav-link" href="#" onclick="render('lunch')">Ebéd</a>
-                    </li>
-                    <li class="nav-item lgdIn">
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Ebéd
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#" onclick="render('appetizer')">Előétel</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="render('mainCourse')">Főétel</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="render('sideDish')">Köret</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="render('dessert')">Desszert</a></li>
+                        </ul>
+                    </li>   
+
+                    <li class="nav-item">
                         <a class="nav-link" href="#" onclick="render('dinner')">Vacsora</a>
                     </li>
                     <li class="nav-item lgdIn">
@@ -44,18 +54,8 @@
                     <li class="nav-item lgdIn">
                         <a class="nav-link" href="#" onclick="logout()">Kilépés</a>
                     </li>
-                    <!-- Dropdown menü -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Ételkategóriák
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Előétel</a></li>
-                            <li><a class="dropdown-item" href="#">Főétel</a></li>
-                            <li><a class="dropdown-item" href="#">Köret</a></li>
-                            <li><a class="dropdown-item" href="#">Desszert</a></li>
-                        </ul>
-                    </li>
+                    
+                    
                 </ul>
             </div>
         </div>

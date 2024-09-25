@@ -11,7 +11,6 @@ html, body {
 }
 body{
     background-color: rgb(255, 255, 255);
-    
     color: rgb(0, 0, 0);
   
 }
@@ -286,6 +285,7 @@ footer {
         cursor: pointer;
       }
 
+
       
 
       /* ------------ SAJÁT RECEPTEK CSS ----------*/
@@ -426,4 +426,5 @@ margin-bottom: 2%;
     .rolunknevek{
         padding-right: 5%;
     }
+
 }

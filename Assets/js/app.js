@@ -7,13 +7,6 @@ const serverUrl = 'http://localhost:3000';
 
 let loggedUser = null;
 
-let title = document.querySelector('title');
-let header = document.querySelector('header');
-let footer = document.querySelector('footer');
-
-title.innerHTML = AppTitle + ' ' + AppVersion;
-header.innerHTML = title.innerHTML;
-footer.innerHTML = Company + ' | ' + Author + ' | 2024.';
 
 // render the actual content to the main div 
 async function render(view){
@@ -21,13 +14,13 @@ async function render(view){
     main.innerHTML = await (await fetch(`Views/${view}.html`)).text();
 
     
+
     switch(view){
         case 'breakfast': {
             
             recept(4);
             break;
         }
-
 
         case 'dinner': {
             recept(6);
@@ -55,7 +48,15 @@ async function render(view){
             break;
         }
     
-    
+        case 'profile': {
+            getMe();
+            break;
+        }
+
+        case 'users': {
+            getUsers();
+            break;
+        }
 
     }
 
@@ -64,10 +65,12 @@ async function render(view){
 
 if (localStorage.getItem('cookbook')){
     loggedUser = JSON.parse(localStorage.getItem('cookbook'));
-    render('breakfast');
+    render('lunch');
 }else{
     render('login');
 }
+
+
 
 function renderNavItems() {
  
@@ -118,7 +121,7 @@ function renderNavItems() {
  
 
 function authorize(){
-    console.log(loggedUser[0].ID + "Konrád baszki")
+    console.log(loggedUser[0].ID + "Jókó szólsz! Basszuskulcs!")
     let res = {
          headers: { "Authorization": loggedUser[0].ID  }
     }

@@ -121,7 +121,7 @@ function renderNavItems() {
  
 
 function authorize(){
-    console.log(loggedUser[0].ID + "Jókó szólsz!")
+    console.log(loggedUser[0].ID + "Jókó szólsz! Basszuskulcs!")
     let res = {
          headers: { "Authorization": loggedUser[0].ID  }
     }

@@ -29,8 +29,8 @@ function login(){
         loggedUser = res.data;
         localStorage.setItem('cookbook', JSON.stringify(loggedUser));
         renderNavItems();
-        console.log(loggedUser[0].ID);
         render('lunch');
+
     });
 }
 
